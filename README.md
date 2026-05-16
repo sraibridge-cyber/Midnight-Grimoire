@@ -94,3 +94,17 @@ Story generation routes through `/api/mg-generate` (Hono server route on zo.spac
 - GitHub: github.com/sraibridge-cyber
 - Domain: harmony-labs.dev
 - Sovereignty: serverless, cloudless, vendorless
+## Progress Tracking System
+
+The generation progress bar uses an internal cubic-ease-in curve based on scene length:
+
+| Scene Length | Expected Duration |
+|--------------|-------------------|
+| Brief        | ~15s              |
+| Standard     | ~25s              |
+| Extended     | ~35s              |
+| Full Chapter | ~45s              |
+
+Progress formula: `eased = 1 - (1 - elapsed/expected)^3`
+
+The ETA countdown uses the remaining percentage × expected time remaining.
