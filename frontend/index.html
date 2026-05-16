@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>📖 Midnight Grimoire</title>
+<link rel="stylesheet" href="css/v2-styles.css">
+</head>
+<body>
+<div id="sf"></div>
+<div class="wrap">
+
+<header>
+  <div class="sigil">📖</div>
+  <h1>MIDNIGHT GRIMOIRE</h1>
+  <p class="sub">Sovereign Story Engine · AI #87 · Harmony Core</p>
+  <span class="vbadge">v2.1.0 · Kyle S. Whitlock · Fully Sovereign</span>
+</header>
+
+<div class="axiom-bar" id="axiomBar">Loading Harmony Core...</div>
+<div class="status-bar" id="statusBar">
+  <span class="sdot green"></span>
+  <span id="statusText">Initializing...</span>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('home', this)">Home</button>
+  <button class="tab-btn" onclick="showTab('grimoire', this)">Grimoire</button>
+  <button class="tab-btn" onclick="showTab('memory', this)">Memory</button>
+  <button class="tab-btn" onclick="showTab('world', this)">World</button>
+  <button class="tab-btn" onclick="showTab('archive', this)">Archive</button>
+</div>
+
+<div id="tab-home" class="tab-content active">
+  <div class="panel">
+    <div class="ptitle">🧬 Harmony Core Engine — Architecture</div>
+    <div style="margin-bottom:8px"><span style="color:var(--accent2)">Harmony Story Matrix (HSM)</span> — Built-in sovereign narrative generator</div>
+    <div style="margin-bottom:8px"><span style="color:var(--accent2)">ConcordanceChain</span> — 6-chain coherence validation</div>
+    <div style="margin-bottom:8px"><span style="color:var(--accent2)">CoherenceCalculus</span> — μ scoring &amp; sovereign seal gate</div>
+    <div style="margin-bottom:8px"><span style="color:var(--accent2)">ThreadMemory</span> — persistent narrative facts across chapters</div>
+    <div style="margin-bottom:8px"><span style="color:var(--accent2)">WorldBuilder</span> — locations, lore, character arcs</div>
+    <div style="margin-bottom:8px"><span style="color:var(--accent2)">SoundscapeEngine</span> — ambient audio from prose</div>
+    <div style="margin-top:8px;color:var(--text3);font-size:.72rem">Architect: Kyle S. Whitlock · Engine #87 · Sovereign · Cloudless · Phone-First</div>
+  </div>
+</div>
+
+<div id="tab-grimoire" class="tab-content"></div>
+<div id="tab-memory" class="tab-content"></div>
+<div id="tab-world" class="tab-content"></div>
+<div id="tab-archive" class="tab-content"></div>
+
+</div><!-- .wrap -->
+<script>
+(function loadModules() {
+  var base = 'js/';
+  var mods = [
+    'hsm_engine.js',
+    'generate_chapter.js',
+    'thread_memory.js',
+    'chapter_organizer.js',
+    'world_builder.js',
+    'relationship_mapper.js',
+    'concordance_chain.js',
+    'mu_calculus.js',
+    'polyglot_pass.js',
+    'world_context.js',
+    'soundscape_engine.js',
+    'voice_synthesis.js'
+  ];
+  var i = 0;
+  function loadNext() {
+    if (i >= mods.length) {
+      // All modules loaded — call init
+      if (typeof init === 'function') init();
+      return;
+    }
+    var s = document.createElement('script');
+    s.src = base + mods[i];
+    s.onload = function() { i++; loadNext(); };
+    s.onerror = function() { console.warn('Midnight Grimoire: failed to load ' + mods[i] + ' — falling back'); loadFullEngine(); };
+    document.head.appendChild(s);
+  }
+  function loadFullEngine() {
+    var s = document.createElement('script');
+    s.src = base + 'engine.full.js';
+    s.onload = function() { if (typeof init === 'function') init(); };
+    document.head.appendChild(s);
+  }
+  loadNext();
+})();
+</script>
+</body>
+</html>
